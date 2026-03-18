@@ -1,0 +1,206 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Docker volumes data directories
+mysql_data/
+data/
+volumes/
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup and export directories
+backups/
+exports/
+*.backup
+*.sql.gz
+*.sql.bz2
+*.sql.zip
+
+# Custom configuration (kecuali contoh)
+mysql_conf/
+!mysql_conf/my.cnf.example
+!mysql_conf/*.example
+
+# Initialization scripts (kecuali contoh)
+init-scripts/
+!init-scripts/*.example
+!init-scripts/README.md
+
+# Logs
+logs/
+*.log
+mysql.log
+error.log
+slow-query.log
+docker-compose.log
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.classpath
+.settings/
+*.sublime-*
+*.code-workspace
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Docker related
+.docker/
+docker-compose.override.yml
+!docker-compose.override.yml.example
+
+# Makefile backup
+Makefile.bak
+Makefile.backup
+
+# Script backup
+*.sh.bak
+*.sh.backup
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.pid
+*.lock
+*.sock
+
+# Certificates and secrets (jika ada)
+certs/
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Application specific (jika Anda menambahkan app nanti)
+node_modules/
+vendor/
+venv/
+__pycache__/
+*.pyc
+target/
+*.class
+*.jar
+*.war
+*.ear
+dist/
+build/
+*.egg-info/
+
+# Logs from tools
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Test coverage
+coverage/
+.coverage
+*.lcov
+.history/
+
+# Custom MySQL config backups
+my.cnf.bak
+my.ini.bak
+
+# Ignore all .cnf files in root (tapi contoh tetap dilacak)
+*.cnf
+!my.cnf.example
+!*.cnf.example
+
+# Ignore all .sql files in root (tapi di init-scripts mungkin dilacak jika perlu)
+*.sql
+!init-scripts/*.sql
+!seed.sql
+!schema.sql
+!*.sql.example
+
+# Docker compose override
+docker-compose.override.yml
+*.override.yml
+
+# Markdown temp files
+*.md.tmp
+*.markdown.tmp
+
+# Binary files
+*.bin
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Archive files
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.rar
+!backups/   # Tapi kita ignore semua isi backups
+!exports/   # Tapi kita ignore semua isi exports
+backups/*
+exports/*
+!backups/.gitkeep
+!exports/.gitkeep
+
+# Secret files
+*.secret
+*.enc
+*.encrypted
+*.age
+*.gpg
+
+# History files
+.bash_history
+.zsh_history
+.history
+
+# Docker context files
+.dockerignore
+!docker-compose.yml
+!Dockerfile (jika ada)
+
+# Python (jika ada script python)
+*.py[co]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node (jika ada)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# PHP (jika ada)
+composer.lock
+.phpunit.result.cache
+
+# Java (jika ada)
+.gradle/
+build/
+*.iml
+*.ipr
+*.iws
+
+# Go (jika ada)
+go.sum
+*.exe
+*.test
+*.prof

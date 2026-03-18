@@ -1,0 +1,57 @@
+services:
+  mysql:
+    image: mysql:${MYSQL_VERSION:-8.0}
+    container_name: ${CONTAINER_NAME:-mysql-official}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    environment:
+      # Root password (wajib untuk MySQL Official)
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      
+      # Optional: Create database and user on startup
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-myapp_db}
+      - MYSQL_USER=${MYSQL_USER:-myapp_user}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      
+      # Optional: Allow empty password (tidak direkomendasikan)
+      - ALLOW_EMPTY_PASSWORD=no
+      
+      # Character set configuration
+      - MYSQL_CHARACTER_SET_SERVER=utf8mb4
+      - MYSQL_COLLATION_SERVER=utf8mb4_unicode_ci
+      
+      # Timezone
+      - TZ=${TZ:-Asia/Jakarta}
+      
+    volumes:
+      # Persistent data storage
+      - ${MYSQL_DATA_PATH:-./mysql_data}:/var/lib/mysql
+      
+      # Custom configuration
+      - ${MYSQL_CONF_PATH:-./mysql_conf}:/etc/mysql/conf.d
+      
+      # Initialization scripts (run on first startup)
+      - ./init-scripts:/docker-entrypoint-initdb.d
+      
+    networks:
+      - mysql-network
+      
+    restart: unless-stopped
+    
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+      
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  mysql-network:
+    driver: bridge
+    name: mysql-official-network
