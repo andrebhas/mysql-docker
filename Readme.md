@@ -1,19 +1,31 @@
-# MySQL Bitnami Docker Setup
+# MySQL Docker Development Environment
 
-Docker Compose configuration for running Bitnami MySQL with persistent storage.
+Environment pengembangan MySQL dengan Docker, lengkap dengan tools manajemen dan backup otomatis.
 
-## Prerequisites
+## Fitur
 
-- Docker
-- Docker Compose
-- Make (optional, for using Makefile commands)
+- **Zero Configuration** - Langsung jalan dengan satu perintah
+- **Auto Backup** - Backup dan restore mudah
+- **Makefile Power** - 20+ perintah siap pakai
+- **Multi-Version** - Support MySQL 5.7, 8.0, latest
+- **Monitoring** - Healthcheck dan status real-time
 
-## Quick Start
+## Prasyarat
 
-1. **Clone and setup environment:**
-   ```bash
-   # Copy environment file
-   cp .env.example .env
-   
-   # Edit .env file with your configuration
-   nano .env
+- Docker 20.10+
+- Docker Compose 2.x+
+- Make 3.8+
+
+## Quick Start (3 Langkah)
+
+```bash
+# 1. Clone repository
+git clone <repository-url>
+cd mysql-docker-project
+
+# 2. Jalankan script startup
+chmod +x start.sh
+./start.sh
+
+# 3. Selesai! MySQL siap digunakan
+```
